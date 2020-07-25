@@ -1,3 +1,15 @@
+# About
+This app is my first ever project posted on github. And first ever project that I can call complete. It i not intended to be used live.
+Firstly, there already is some websites that serve the purpose of this app, but also, if I wanted it to be used live, there would be no need to make the app as complex as it is.
+
+I chose Blazor Webassembly for this app because I was mostly comfortable with C#. I'm a undergrad and it's my first "serious" programming language. I've known some html/css/javascript and SQL from before too, but not much.
+
+The app pulls data from an SQL Server using Entity Framework and via Web API.
+
+Javascript is used for the simulator page UX. The design is based on the actual game's (Naruto Online) UI. The images are all from the game too, obviously.
+
+Please bear with the front end code, it might be a mess. However, I might update the app a bit more because it's missing some features from the game. But then again, it's not inteded for live launch.
+
 # Combo-Simulator
 A combo sim app for a MMO RPG game "Naruto Online".
 
