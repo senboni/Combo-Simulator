@@ -1,0 +1,241 @@
+﻿@page "/ninjas/edit/{id}"
+@inherits NinjaEditBase
+
+    <EditForm Model="@NinjaViewModel" OnValidSubmit="Edit_Click" OnInvalidSubmit="HandleInvalidSubmit">
+        <DataAnnotationsValidator />
+
+        <Titles Text="Ninja Edit"
+                BackButton="true" BackRoute="@BackRoute" />
+        <div class="form-container">
+            <!-- Name -->
+            <div class="form-group row anim-fade">
+                <label for="Name" class="col-sm-2 col-form-label">
+                    Name
+                </label>
+                <div class="col-sm-10">
+                    <InputText id="name" class="form-control"
+                               placeholder="@(NinjaViewModel.Name == null ? "" : NinjaViewModel.Name)"
+                               @bind-Value="NinjaViewModel.Name" />
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => NinjaViewModel.Name)" />
+                    </div>
+                </div>
+            </div>
+            <!-- MysteryId -->
+            <div class="form-group row anim-fade">
+                <label for="MysteryId" class="col-sm-2 col-form-label">
+                    Mystery
+                </label>
+                <div class="col-sm-10">
+                    <InputSelect id="mysteryId" class="form-control" @bind-Value="MysIdString">
+                        @foreach (var item in Mysteries)
+                        {
+                            <option value="@item.Id.ToString()">@item.Name</option>
+                        }
+                    </InputSelect>
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => MysIdString)" />
+                    </div>
+                </div>
+            </div>
+            <!-- AttackId -->
+            <div class="form-group row anim-fade">
+                <label for="AttackId" class="col-sm-2 col-form-label">
+                    Attack
+                </label>
+                <div class="col-sm-10">
+                    <InputSelect id="attackId" class="form-control" @bind-Value="AttIdString">
+                        @foreach (var item in Attacks)
+                        {
+                            <option value="@item.Id.ToString()">@item.Name</option>
+                        }
+                    </InputSelect>
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => AttIdString)" />
+                    </div>
+                </div>
+            </div>
+            <!-- ChaseId1S -->
+            <div class="form-group row anim-fade">
+                <label for="ChsIdString1" class="col-sm-2 col-form-label">
+                    Chase
+                </label>
+                <div class="col-sm-10">
+                    <InputSelect id="chsId1" class="form-control" @bind-Value="ChaseId1S">
+                        <option value="@NullOption">@NullOption</option>
+                        @foreach (var item in Chases)
+                        {
+                            <option value="@item.Id.ToString()">@item.Name</option>
+                        }
+                    </InputSelect>
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => ChaseId1S)" />
+                    </div>
+                </div>
+            </div>
+            <!-- ChaseId2 -->
+            <div class="form-group row anim-fade">
+                <label for="ChaseId2" class="col-sm-2 col-form-label">
+                    Chase
+                </label>
+                <div class="col-sm-10">
+                    <InputSelect id="chaseId2" class="form-control" @bind-Value="ChaseId2S">
+                        <option value="@NullOption">@NullOption</option>
+                        @foreach (var item in Chases)
+                        {
+                            <option value="@item.Id.ToString()">@item.Name</option>
+                        }
+                    </InputSelect>
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => ChaseId2S)" />
+                    </div>
+                </div>
+            </div>
+            <!-- ChaseId3 -->
+            <div class="form-group row anim-fade">
+                <label for="ChaseId3" class="col-sm-2 col-form-label">
+                    Chase
+                </label>
+                <div class="col-sm-10">
+                    <InputSelect id="chaseId3" class="form-control" @bind-Value="ChaseId3S">
+                        <option value="@NullOption">@NullOption</option>
+                        @foreach (var item in Chases)
+                        {
+                            <option value="@item.Id.ToString()">@item.Name</option>
+                        }
+                    </InputSelect>
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => ChaseId3S)" />
+                    </div>
+                </div>
+            </div>
+            <!-- PassiveId1 -->
+            <div class="form-group row anim-fade">
+                <label for="PassiveId1" class="col-sm-2 col-form-label">
+                    Passive
+                </label>
+                <div class="col-sm-10">
+                    <InputSelect id="passiveId1" class="form-control" @bind-Value="PassiveId1S">
+                        <option value="@NullOption">@NullOption</option>
+                        @foreach (var item in Passives)
+                        {
+                            <option value="@item.Id.ToString()">@item.Name</option>
+                        }
+                    </InputSelect>
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => PassiveId1S)" />
+                    </div>
+                </div>
+            </div>
+            <!-- PassiveId2 -->
+            <div class="form-group row anim-fade">
+                <label for="PassiveId2" class="col-sm-2 col-form-label">
+                    Passive
+                </label>
+                <div class="col-sm-10">
+                    <InputSelect id="passiveId2" class="form-control" @bind-Value="PassiveId2S">
+                        <option value="@NullOption">@NullOption</option>
+                        @foreach (var item in Passives)
+                        {
+                            <option value="@item.Id.ToString()">@item.Name</option>
+                        }
+                    </InputSelect>
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => PassiveId2S)" />
+                    </div>
+                </div>
+            </div>
+            <!-- PassiveId3 -->
+            <div class="form-group row anim-fade">
+                <label for="PassiveId3" class="col-sm-2 col-form-label">
+                    Passive
+                </label>
+                <div class="col-sm-10">
+                    <InputSelect id="passiveId3" class="form-control" @bind-Value="PassiveId3S">
+                        <option value="@NullOption">@NullOption</option>
+                        @foreach (var item in Passives)
+                        {
+                            <option value="@item.Id.ToString()">@item.Name</option>
+                        }
+                    </InputSelect>
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => PassiveId3S)" />
+                    </div>
+                </div>
+            </div>
+            <!-- Image path -->
+            <div class="form-group row anim-fade">
+                <label for="ImagePath" class="col-sm-2 col-form-label">
+                    Image Path
+                </label>
+                <div class="col-sm-10">
+                    <InputText id="imagePath" class="form-control"
+                               placeholder="@(NinjaViewModel.ImagePath == null ? "" : NinjaViewModel.ImagePath)"
+                               @bind-Value="NinjaViewModel.ImagePath" />
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => NinjaViewModel.ImagePath)" />
+                    </div>
+                </div>
+            </div>
+            <!-- Attribute -->
+            <div class="form-group row anim-fade">
+                <label for="Attribute" class="col-sm-2 col-form-label">
+                    Attribute
+                </label>
+                <div class="col-sm-10">
+                    <InputSelect id="attribute" class="form-control" @bind-Value="NinjaViewModel.Attribute">
+                        @foreach (var item in Enum.GetValues(typeof(Attributes)))
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </InputSelect>
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => NinjaViewModel.Attribute)" />
+                    </div>
+                </div>
+            </div>
+            <!-- Type -->
+            <div class="form-group row anim-fade">
+                <label for="Type" class="col-sm-2 col-form-label">
+                    Type
+                </label>
+                <div class="col-sm-10">
+                    <InputText id="type" class="form-control"
+                               placeholder="@(NinjaViewModel.Type == null ? "" : NinjaViewModel.Type)"
+                               @bind-Value="NinjaViewModel.Type" />
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => NinjaViewModel.Type)" />
+                    </div>
+                </div>
+            </div>
+            <!-- Stars -->
+            <div class="form-group row anim-fade">
+                <label for="Stars" class="col-sm-2 col-form-label">
+                    Stars
+                </label>
+                <div class="col-sm-10">
+                    <InputSelect id="stars" class="form-control" @bind-Value="StarsString">
+                        @foreach (var item in StarsList)
+                        {
+                            <option value="@item.ToString()">@item.ToString()</option>
+                        }
+                    </InputSelect>
+                    <div style="min-height: 1.5em">
+                        <ValidationMessage For="@(() => StarsString)" />
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary rounded-pill" type="submit">Submit</button>
+            <a class="btn btn-secondary rounded-pill" href="@BackRoute">Cancel</a>
+        </div>
+    </EditForm>
+
+        <Confirm ConfirmChanged="ConfirmEdit_Click" @ref="EditConfirmation"
+                 ConfirmMessage="@($"Are you sure you want to edit attack Id: {NinjaViewModel.Id} ?")"
+                 ConfirmTitle="Confirm Edit"
+                 ConfirmYes="Save Changes"
+                 ConfirmNo="Cancel"></Confirm>
+
+        <Alert AlertMessage="Make sure to check if all fields are valid!"
+               @ref="AlertDisplay"></Alert>

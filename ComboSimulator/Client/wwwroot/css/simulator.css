@@ -1,0 +1,475 @@
+.main-container {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    height: 100vh;
+}
+
+    .lineup-container {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-x: hidden;
+    }
+
+    .ninjas-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        grid-template-rows: repeat(auto-fill, minmax(92px, 1fr));
+        grid-gap: 0;
+        overflow-x: hidden;
+        background-color: rgb(8,14,19);
+    }
+
+    .ninjas-list {
+        cursor: pointer;
+        color: #e4e4e4;
+        max-height: 92px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+        .ninjas-list .star {
+            bottom: 0;
+            height: 30px;
+            width: 30px;
+            content: "";
+            display: block;
+            align-self: flex-end;
+            margin: 0 5px 0 -14px;
+        }
+
+        .ninjas-list .attribute {
+            bottom: 0;
+            height: 30px;
+            width: 30px;
+            content: "";
+            display: block;
+            align-self: flex-end;
+            margin: 0 5px 0 0;
+        }
+
+        .ninjas-list hr {
+            width: 100%;
+            margin: 7px 0 0 0;
+            border-top: 2px solid #1f3b55;
+        }
+
+        .ninjas-list .name {
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 0 5px 0 5px;
+            text-overflow: ellipsis;
+            align-self: flex-start;
+        }
+
+    .moveset {
+        position: absolute;
+        background-size: auto;
+        width: auto;
+        height: 200px;
+        cursor: pointer;
+    }
+
+    .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+    }
+
+    .background-image {
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        left: 50%;
+        margin-left: -650px;
+        width: 100%;
+        height: 100%;
+        transform: scale(1.1);
+        -webkit-filter: blur(8px);
+    }
+
+    .lineup-slots {
+        background-image: url(/assets/team.png);
+        background-size: 650px 377px;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-top: 20%;
+        justify-content: center;
+        align-content: center;
+        min-height: 400px;
+        display: grid;
+        grid-template-columns: 190px 15px 15px 160px 15px 15px 190px;
+        grid-template-rows: 70px 80px 90px;
+        grid-template-areas: "pos-7 pos-7 pos-7 pos-4 pos-1 pos-1 pos-1" "pos-8 pos-8 pos-8 pos-5 pos-2 pos-2 pos-2" "pos-9 pos-9 pos-6 pos-6 pos-6 pos-3 pos-3"
+    }
+
+    .row-top {
+        height: 70px;
+    }
+
+    .center-row {
+        height: 80px;
+    }
+
+    .bottom-row {
+        height: 90px;
+        width: 178px !important;
+    }
+
+    .left-col {
+        justify-self: start;
+    }
+
+    .center-col {
+        justify-self: center;
+    }
+
+    .right-col {
+        justify-self: start;
+    }
+
+    #pos-7 {
+        grid-area: pos-7;
+        justify-self: end;
+        left: -10px;
+    }
+
+    #pos-4 {
+        grid-area: pos-4;
+    }
+
+    #pos-1 {
+        grid-area: pos-1;
+        justify-self: start;
+        left: 10px;
+    }
+
+    #pos-8 {
+        grid-area: pos-8;
+        justify-self: center;
+    }
+
+    #pos-5 {
+        grid-area: pos-5;
+    }
+
+    #pos-2 {
+        grid-area: pos-2;
+        justify-self: center;
+    }
+
+    #pos-9 {
+        grid-area: pos-9;
+        left: 10px;
+    }
+
+    #pos-6 {
+        grid-area: pos-6;
+        left: 5px;
+    }
+
+    #pos-3 {
+        grid-area: pos-3;
+        justify-self: end;
+        left: 5px;
+    }    
+
+    .imgWrapper {
+        position: relative;
+        margin: 0 auto;
+    }
+
+    .imgWrapperTop {
+        width: 150px;
+        height: 150px;
+        top: -100px;
+    }
+
+    .imgWrapperMid {
+        width: 170px;
+        height: 170px;
+        top: -110px;
+    }
+
+    .imgWrapperBtm {
+        width: 190px;
+        height: 190px;
+        top: -120px;
+    }
+
+    .droppable {
+        width: 160px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+    }
+
+        .droppable div {
+            margin: 0 auto;
+        }
+
+        .droppable img {
+            margin: -135px auto 0 auto;
+        }
+
+    .moveset {
+        height: 170px;
+        position: absolute;
+    }
+
+    .glowing {
+        position: absolute;
+        width: 160px;
+        height: 70px;
+        z-index: -1;
+    }
+
+    .glow-red {
+        background: radial-gradient(rgba(180, 90, 90, 0.8) 0%, rgba(255,255,255,0) 70%);
+    }
+
+    .glow-blue {
+        background: radial-gradient(rgba(90,160,180,0.8) 0%, rgba(255,255,255,0) 70%);
+    }
+
+    .glow-green {
+        background: radial-gradient(rgba(101, 180, 90, 0.8) 0%, rgba(255,255,255,0) 70%);
+    }
+
+    .hover-container {
+        position: absolute;
+        top: 1em;
+        background: rgba(11, 19, 26, 0.8);
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+        padding: 1em 0.5em 1em 0.5em;
+        color: #e4e4e4;
+        max-width: 500px;
+    }
+
+        .hover-container .hover-info {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+        }
+
+    .hover-info img {
+        border-radius: 0.5em;
+        margin-right: 1em;
+        align-self: center;
+    }
+
+    .hover-info span {
+        margin-right: 1em;
+    }
+
+        .hover-info span span {
+            margin-right: 0;
+            font-weight: 600;
+        }
+
+    .hover-info div {
+        min-width: 35px;
+        overflow: hidden;
+    }
+
+        .hover-info div img {
+            width: 30px;
+        }
+
+    .hover-container .hover-hr {
+        margin: 0.5em 0 0.5em 0;
+        border: 1px solid rgba(24, 52, 83, 0.6);
+    }
+
+    #combo-container {
+        background: rgba(12, 19, 27, 0.8);
+        left: 0;
+        bottom: 0;
+        padding: 1em 1em 0 1em;
+    }
+
+    #cause-container {
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 0 0 1em 0;
+        min-height: 44px;
+        justify-content: center;
+    }
+
+    .cause {
+        height: 44px;
+        width: 120px;
+        margin: 0 0.5em 0 0;
+        border-radius: 0.5em;
+        opacity: 0.3;
+        cursor: pointer;
+    }
+
+    .cause-selected {
+        opacity: 1;
+    }
+
+    .cause:hover {
+        opacity: 1;
+    }
+
+    .chase-container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1em 0 0 1em;
+        min-height: calc(64px + 2em);
+        border-radius: 1em;
+        background: rgba(90, 155, 180, 0.1);
+        margin-bottom: 1em;
+    }
+
+        .chase-container .chase {
+            width: 100px;
+            height: 64px;
+            margin: 0 1em 1em 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+        }
+
+    .chase img {
+        align-self: flex-end;
+        border-radius: 0.5em;
+    }
+
+    .chase-container:last-child {
+        margin-right: 0;
+    }
+
+
+    @media (max-width: 1112px) {
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 50% 50%;
+            height: 100vh;
+        }
+    
+        /* .lineup-container {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        } */
+    
+        .lineup-slots {
+            background-size: 520px 301px;
+            margin-top: 10%;
+            min-height: 320px;
+            grid-template-columns: 152px 12px 12px 128px 12px 12px 152px;
+            grid-template-rows: 56px 64px 72px;
+            grid-template-areas: "pos-7 pos-7 pos-7 pos-4 pos-1 pos-1 pos-1" "pos-8 pos-8 pos-8 pos-5 pos-2 pos-2 pos-2" "pos-9 pos-9 pos-6 pos-6 pos-6 pos-3 pos-3"
+        }
+    
+        .background-image {
+            top: 0;
+            left: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .row-top {
+            height: 56px;
+        }
+    
+        .center-row {
+            height: 64px;
+        }
+    
+        .bottom-row {
+            height: 72px;
+            width: 142px !important;
+        }
+    
+        .left-col {
+            justify-self: start;
+        }
+    
+        .center-col {
+            justify-self: center;
+        }
+    
+        .right-col {
+            justify-self: start;
+        }
+    
+        #pos-7 {
+            grid-area: pos-7;
+            justify-self: end;
+            left: -8px;
+        }
+    
+        #pos-4 {
+            grid-area: pos-4;
+        }
+    
+        #pos-1 {
+            grid-area: pos-1;
+            justify-self: start;
+            left: 8px;
+        }
+    
+        #pos-8 {
+            grid-area: pos-8;
+            justify-self: center;
+        }
+    
+        #pos-5 {
+            grid-area: pos-5;
+        }
+    
+        #pos-2 {
+            grid-area: pos-2;
+            justify-self: center;
+        }
+    
+        #pos-9 {
+            grid-area: pos-9;
+            left: 8px;
+        }
+    
+        #pos-6 {
+            grid-area: pos-6;
+            left: 4px;
+        }
+    
+        #pos-3 {
+            grid-area: pos-3;
+            justify-self: end;
+            left: 4px;
+        }
+        .droppable {
+            width: 142px;
+        }
+        .droppable img {
+            margin: -108px auto 0 auto;
+        }
+        .moveset {
+            height: 136px;
+        }
+    
+        .glowing {
+            width: 128px;
+            height: 56px;
+        }
+    }

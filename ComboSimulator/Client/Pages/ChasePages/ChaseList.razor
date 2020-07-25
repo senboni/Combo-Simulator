@@ -1,0 +1,42 @@
+﻿@page "/chases"
+@inherits ChaseListBase
+
+        <Titles Text="Chases"
+                BackButton="true" BackRoute="#"
+                NewButton="true" NewRoute="chases/create"
+                SearchInput="true" SearchMethod="UpdateFilterList" />
+
+        @if (ChaseList == null || ChaseList.Count() == 0)
+        {
+            <div class="spinner"></div>
+        }
+        else
+        {
+            <div class="table-expandable">
+                <table class="table table-sm  table-borderless table-responsive d-block d-xl-table"
+                       @onmousemove="@mouseMove" @onmouseout="@mouseOut">
+                    <thead class="thead-light">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Attribute</th>
+                            <th>Jutsu</th>
+                            <th>Chase</th>
+                            <th>Cause</th>
+                            <th>Effect</th>
+                            <th>Hits</th>
+                            <th>Repeat</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <ChaseFilter FilteredList="@FilteredList" @ref="@filterChases">
+                        <RenderFragment />
+                    </ChaseFilter>
+                </table>
+            </div>
+        }
+        <div class="h4-container">
+            <h5>@Coords</h5>
+        </div>

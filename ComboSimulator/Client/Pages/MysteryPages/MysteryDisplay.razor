@@ -1,0 +1,58 @@
+﻿<tr>
+    @if (IsList)
+    {
+        <td class="align-middle"><ButtonManage Route="mysteries" Id="@Mystery.Id" /></td>
+    }
+    <td class="align-middle">
+        @if (Mystery.ImagePath != null)
+        {
+            <div class="tablerow">
+                <img src="assets/mysteries/@Mystery.ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="" />
+            </div>
+        }
+    </td>
+    <td><div class="tablerow">@Mystery.Id</div></td>
+    <td><div class="tablerow">@Mystery.Name</div></td>
+    <td>
+        @if (Mystery.Attribute1 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Mystery.Attribute1).png" alt="" height="30" />
+            </div>
+        }
+        @if (Mystery.Attribute2 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Mystery.Attribute2).png" alt="" height="30" />
+            </div>
+        }
+    </td>
+    <td>
+        @if (Mystery.Jutsu1 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Mystery.Jutsu1).png" alt="" height="30" />
+            </div>
+        }
+        @if (Mystery.Jutsu2 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Mystery.Jutsu2).png" alt="" height="30" />
+            </div>
+        }
+    </td>
+    <td><div class="tablerow">@Mystery.Causing</div></td>
+    <td><div class="tablerow">@Mystery.Effects</div></td>
+    <td><div class="tablerow">@Mystery.Prompt</div></td>
+    <td><div class="tablerow">@Mystery.BfCooldown</div></td>
+    <td><div class="tablerow">@Mystery.Cooldown</div></td>
+    <td><div class="tablerow">@Mystery.Chakra</div></td>
+    <td class="tablerow-expandable"><div>@Mystery.Description</div></td>
+</tr>
+
+@code {
+    [Parameter]
+    public Mystery Mystery { get; set; }
+    [Parameter]
+    public bool IsList { get; set; } = true;
+}

@@ -1,0 +1,19 @@
+﻿<tbody>
+    @foreach (var i in FilteredList)
+    {
+        <PassiveDisplay Passive="i" />
+    }
+    @RenderFragment
+</tbody>
+
+@code {
+    [Parameter]
+    public List<Passive> FilteredList { get; set; }
+    [Parameter]
+    public RenderFragment RenderFragment { get; set; }
+
+    public void RefreshTable()
+    {
+        StateHasChanged();
+    }
+}

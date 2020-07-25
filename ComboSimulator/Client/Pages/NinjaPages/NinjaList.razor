@@ -1,0 +1,41 @@
+﻿@page "/ninjas"
+@inherits NinjaListBase
+
+        <Titles Text="Ninjas"
+                BackButton="true" BackRoute="#"
+                NewButton="true" NewRoute="ninjas/create"
+                SearchInput="true" SearchMethod="@UpdateFilterList" />
+
+        @if (NinjaList == null || NinjaList.Count() == 0)
+        {
+            <div class="spinner"></div>
+        }
+        else
+        {
+            <div class="table-expandable">
+                <table class="table table-sm  table-borderless table-responsive table-borderless w-100 d-block d-xl-table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th><div>Attribute</div></th>
+                            <th><div>Id</div></th>
+                            <th><div>Name</div></th>
+                            <th><div>Mystery</div></th>
+                            <th><div>Attack</div></th>
+                            <th><div>Chase_1</div></th>
+                            <th><div>Chase_2</div></th>
+                            <th><div>Chase_3</div></th>
+                            <th><div>Passive_1</div></th>
+                            <th><div>Passive_2</div></th>
+                            <th><div>Passive_3</div></th>
+                            <th><div>Stars</div></th>
+                            <th><div>Type</div></th>
+                        </tr>
+                    </thead>
+                    <NinjaFilter FilteredList="@FilteredList" @ref="@filterNinjas">
+                        <RenderFragment />
+                    </NinjaFilter>
+                </table>
+            </div>
+        }

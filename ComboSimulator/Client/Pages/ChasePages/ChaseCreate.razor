@@ -1,0 +1,25 @@
+﻿@page "/chases/create"
+@inherits ChaseCreateBase
+
+    <EditForm Model="@ChaseViewModel" OnValidSubmit="Create_Click" OnInvalidSubmit="HandleInvalidCreate">
+        <DataAnnotationsValidator />
+
+        <Titles Text="Chase Create"
+                BackButton="true" BackRoute="chases" />
+            <div class="form-container">
+                <ChaseForm ChaseViewModel="@ChaseViewModel" NullOption="@NullOption"
+                           stringHits="@stringHits" stringRepeat="@stringRepeat" />
+
+                <button class="btn btn-primary rounded-pill" type="submit">Submit</button>
+                <button class="btn btn-secondary rounded-pill" type="submit" @onclick="Back_Click">Cancel</button>
+            </div>
+    </EditForm>
+
+        <Confirm ConfirmChanged="ConfirmCreate_Click" @ref="CreateConfirmation"
+                 ConfirmMessage="@($"Are you sure you want to create chase Id: {ChaseViewModel.Id} ?")"
+                 ConfirmTitle="Confirm Create"
+                 ConfirmYes="Create"
+                 ConfirmNo="Cancel"></Confirm>
+
+        <Alert AlertMessage="Make sure to check if all fields are valid!"
+               @ref="AlertDisplay"></Alert>

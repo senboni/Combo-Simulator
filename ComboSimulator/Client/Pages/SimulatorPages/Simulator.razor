@@ -1,0 +1,66 @@
+﻿@page "/"
+
+@inherits SimulatorBase
+
+<div class="main-container" id="mainContainer">
+
+
+
+    <!-- Lineup Conatiner -->
+    <div class="background-image" style="background: url(/assets/background/@BackgroundImages[randomNumber]);"></div>
+    <div class="lineup-container noselect">
+        <div class="lineup-slots noselect">
+            <div class="droppable noselect row-top left-col" id="pos-7"></div>
+            <div class="droppable noselect row-top center-col" id="pos-4"></div>
+            <div class="droppable noselect row-top right-col" id="pos-1"></div>
+            <div class="droppable noselect center-row left-col" id="pos-8"></div>
+            <div class="droppable noselect center-row center-col" id="pos-5"></div>
+            <div class="droppable noselect center-row right-col" id="pos-2"></div>
+            <div class="droppable noselect bottom-row left-col" id="pos-9"></div>
+            <div class="droppable noselect bottom-row center-col" id="pos-6"></div>
+            <div class="droppable noselect bottom-row right-col" id="pos-3"></div>
+        </div>
+        <div id="cause-container"></div>
+        <div id="combo-container">
+            <div class="chase-container" id="mystery-container"></div>
+            <div class="chase-container" id="attack-container"></div>
+        </div>
+    </div>
+
+    <!-- Ninja List Conatiner -->
+
+    <div id="ninjas-container-id" class="ninjas-container noselect">
+        @if (NinjaList == null || NinjaList.Count() == 0)
+        {
+            <div class="spinner" style="left: 81%"></div>
+        }
+        else
+        {
+
+            @foreach (var n in FilteredList)
+            {
+                <div class="ninjas-list anim-fade" 
+                     @onmousedown="@(e => MouseDown(n, e))" @onmouseover="@(() => MouseOver(n))" @onmouseout="MouseOut" @ref="ninRef"
+                     style="background: url('assets/ninjas/@(n.ImagePath)') top left no-repeat,
+                                            linear-gradient(0deg, rgba(8,14,19,1) 0%, rgba(31,59,85,1) 100%);">
+
+                    @for (int i = 0; i < n.Stars; i++)
+                    {
+                        <div class="star" style="background: url('assets/star.png') center right no-repeat;
+                                                     background-size: 24px;"></div>
+                    }
+
+                    <hr style="border-top: 0px solid rgba(250, 250, 250, 0); margin: 0;" />
+
+                    <div class="attribute" style="background: url('assets/attributes/@(n.Attribute).png') center right no-repeat;
+                                                      background-size: 24px;"></div>
+
+                    <hr />
+
+                    <div class="name">@n.Name</div>
+                </div>
+            }
+        }
+    </div>
+
+</div>

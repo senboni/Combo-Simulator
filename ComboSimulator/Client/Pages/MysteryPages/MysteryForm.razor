@@ -1,0 +1,215 @@
+﻿<!-- Name -->
+<div class="form-group row anim-fade">
+    <label for="Name" class="col-sm-2 col-form-label">
+        Name
+    </label>
+    <div class="col-sm-10">
+        <InputText id="name" class="form-control"
+                   placeholder="@(MysteryViewModel.Name == null ? "" : MysteryViewModel.Name)"
+                   @bind-Value="MysteryViewModel.Name" />
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => MysteryViewModel.Name)" />
+        </div>
+    </div>
+</div>
+<!-- Attribute 1 -->
+<div class="form-group row anim-fade">
+    <label for="Attribute1" class="col-sm-2 col-form-label">
+        Attribute 1
+    </label>
+    <div class="col-sm-10">
+        <InputSelect id="attribute1" class="form-control" @bind-Value="MysteryViewModel.Attribute1">
+            <option>@NullOption</option>
+            @foreach (var item in Enum.GetValues(typeof(Attributes)))
+            {
+                <option value="@item">@item</option>
+            }
+        </InputSelect>
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => MysteryViewModel.Attribute1)" />
+        </div>
+    </div>
+</div>
+<!-- Attribute 2 -->
+<div class="form-group row anim-fade">
+    <label for="Attribute2" class="col-sm-2 col-form-label">
+        Attribute 2
+    </label>
+    <div class="col-sm-10">
+        <InputSelect id="attribute2" class="form-control" @bind-Value="MysteryViewModel.Attribute2">
+            <option>@NullOption</option>
+            @foreach (var item in Enum.GetValues(typeof(Attributes)))
+            {
+                <option value="@item">@item</option>
+            }
+        </InputSelect>
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => MysteryViewModel.Attribute2)" />
+        </div>
+    </div>
+</div>
+<!-- Jutsu 1 -->
+<div class="form-group row anim-fade">
+    <label for="Jutsu1" class="col-sm-2 col-form-label">
+        Jutsu 1
+    </label>
+    <div class="col-sm-10">
+        <InputSelect id="jutsu1" class="form-control" @bind-Value="MysteryViewModel.Jutsu1">
+            <option>@NullOption</option>
+            @foreach (var item in Enum.GetValues(typeof(Jutsus)))
+            {
+                <option value="@item">@item</option>
+            }
+        </InputSelect>
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => MysteryViewModel.Jutsu1)" />
+        </div>
+    </div>
+</div>
+<!-- Jutsu 2 -->
+<div class="form-group row anim-fade">
+    <label for="Jutsu2" class="col-sm-2 col-form-label">
+        Jutsu 2
+    </label>
+    <div class="col-sm-10">
+        <InputSelect id="jutsu2" class="form-control" @bind-Value="MysteryViewModel.Jutsu2">
+            <option>@NullOption</option>
+            @foreach (var item in Enum.GetValues(typeof(Jutsus)))
+            {
+                <option value="@item">@item</option>
+            }
+        </InputSelect>
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => MysteryViewModel.Jutsu2)" />
+        </div>
+    </div>
+</div>
+<!-- Causing -->
+<div class="form-group row anim-fade">
+    <label for="Causing" class="col-sm-2 col-form-label">
+        Causing
+    </label>
+    <div class="col-sm-10">
+        <InputSelect id="causing" class="form-control" @bind-Value="MysteryViewModel.Causing">
+            <option>@NullOption</option>
+            @foreach (var item in Enum.GetValues(typeof(Causes)))
+            {
+                <option value="@item">@item</option>
+            }
+        </InputSelect>
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => MysteryViewModel.Causing)" />
+        </div>
+    </div>
+</div>
+<!-- Effects -->
+<div class="form-group row anim-fade">
+    <label for="Effects" class="col-sm-2 col-form-label">
+        Effects
+    </label>
+    <div class="col-sm-10">
+        <InputText id="effects" class="form-control"
+                   placeholder="@(MysteryViewModel.Effects == null ? "" : MysteryViewModel.Effects)"
+                   @bind-Value="MysteryViewModel.Effects" />
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => MysteryViewModel.Effects)" />
+        </div>
+    </div>
+</div>
+<!-- Description -->
+<div class="form-group row anim-fade">
+    <label for="Description" class="col-sm-2 col-form-label">
+        Description
+    </label>
+    <div class="col-sm-10">
+        <InputText id="description" class="form-control"
+                   placeholder="@(MysteryViewModel.Description == null ? "" : MysteryViewModel.Description)"
+                   @bind-Value="MysteryViewModel.Description" />
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => MysteryViewModel.Description)" />
+        </div>
+    </div>
+</div>
+<!-- Image path -->
+<div class="form-group row anim-fade">
+    <label for="ImagePath" class="col-sm-2 col-form-label">
+        Image Path
+    </label>
+    <div class="col-sm-10">
+        <InputText id="imagePath" class="form-control"
+                   placeholder="@(MysteryViewModel.ImagePath == null ? "" : MysteryViewModel.ImagePath)"
+                   @bind-Value="MysteryViewModel.ImagePath" />
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => MysteryViewModel.ImagePath)" />
+        </div>
+    </div>
+</div>
+<!-- Prompt -->
+<div class="form-group row anim-fade">
+    <label for="prompt" class="col-sm-2 col-form-label">
+        Prompt
+    </label>
+    <div class="col-sm-10">
+        <InputCheckbox id="prompt" style="width: 1.5em; height: 1.5em;"
+                       placeholder="MysteryViewModel.Prompt"
+                       @bind-Value="MysteryViewModel.Prompt" />
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => MysteryViewModel.Prompt)" />
+        </div>
+    </div>
+</div>
+<!-- BF Cooldown -->
+<div class="form-group row anim-fade">
+    <label for="bfc" class="col-sm-2 col-form-label">
+        Battlefield Cooldown
+    </label>
+    <div class="col-sm-10">
+        <InputText id="bfc" class="form-control"
+                   placeholder="@stringBFC"
+                   @bind-Value="@stringBFC" />
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => stringBFC)" />
+        </div>
+    </div>
+</div>
+<!-- Cooldown -->
+<div class="form-group row anim-fade">
+    <label for="cd" class="col-sm-2 col-form-label">
+        Cooldown
+    </label>
+    <div class="col-sm-10">
+        <InputText id="cd" class="form-control"
+                   placeholder="@stringCD"
+                   @bind-Value="@stringCD" />
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => stringCD)" />
+        </div>
+    </div>
+</div>
+<!-- Chakra -->
+<div class="form-group row anim-fade">
+    <label for="chakra" class="col-sm-2 col-form-label">
+        Chakra
+    </label>
+    <div class="col-sm-10">
+        <InputText id="chakra" class="form-control"
+                   placeholder="@stringChakra"
+                   @bind-Value="@stringChakra" />
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => stringChakra)" />
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public MysteryViewModel MysteryViewModel { get; set; } = new MysteryViewModel();
+    [Parameter]
+    public string NullOption { get; set; } = "None";
+    [Parameter]
+    public string stringBFC { get; set; } = "1";
+    [Parameter]
+    public string stringCD { get; set; } = "2";
+    [Parameter]
+    public string stringChakra { get; set; } = "40";
+}

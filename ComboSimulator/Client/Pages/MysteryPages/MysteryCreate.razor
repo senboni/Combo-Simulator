@@ -1,0 +1,25 @@
+﻿@page "/mysteries/create"
+@inherits MysteryCreateBase
+
+    <EditForm Model="@MysteryViewModel" OnValidSubmit="Create_Click" OnInvalidSubmit="HandleInvalidCreate">
+        <DataAnnotationsValidator />
+
+        <Titles Text="Mystery Create"
+                BackButton="true" BackRoute="mysteries" />
+        <div class="form-container">
+            <MysteryForm MysteryViewModel="@MysteryViewModel" NullOption="@NullOption"
+                         stringBFC="@stringBFC" stringCD="@stringCD" stringChakra="@stringChakra" />
+
+            <button class="btn btn-primary rounded-pill" type="submit">Submit</button>
+            <button class="btn btn-secondary rounded-pill" type="submit" @onclick="Back_Click">Cancel</button>
+        </div>
+    </EditForm>
+
+        <Confirm ConfirmChanged="ConfirmCreate_Click" @ref="CreateConfirmation"
+                 ConfirmMessage="@($"Are you sure you want to create chase Id: {MysteryViewModel.Id} ?")"
+                 ConfirmTitle="Confirm Create"
+                 ConfirmYes="Create"
+                 ConfirmNo="Cancel"></Confirm>
+
+        <Alert AlertMessage="Make sure to check if all fields are valid!"
+               @ref="AlertDisplay"></Alert>

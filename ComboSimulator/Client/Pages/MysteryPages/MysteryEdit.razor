@@ -1,0 +1,25 @@
+﻿@page "/mysteries/edit/{id}"
+@inherits MysteryEditBase
+
+    <EditForm Model="@MysteryViewModel" OnValidSubmit="Edit_Click" OnInvalidSubmit="HandleInvalidSubmit">
+        <DataAnnotationsValidator />
+
+        <Titles Text="Mystery Edit"
+                BackButton="true" BackRoute="@BackRoute" />
+        <div class="form-container">
+            <MysteryForm MysteryViewModel="@MysteryViewModel" NullOption="@NullOption"
+                         stringBFC="@stringBFC" stringCD="@stringCD" stringChakra="@stringChakra" />
+
+            <button class="btn btn-primary rounded-pill" type="submit">Submit</button>
+            <a class="btn btn-secondary rounded-pill" href="@BackRoute">Cancel</a>
+        </div>
+    </EditForm>
+
+        <Confirm ConfirmChanged="ConfirmEdit_Click" @ref="EditConfirmation"
+                 ConfirmMessage="@($"Are you sure you want to edit mystery Id: {MysteryViewModel.Id} ?")"
+                 ConfirmTitle="Confirm Edit"
+                 ConfirmYes="Save Changes"
+                 ConfirmNo="Cancel"></Confirm>
+
+        <Alert AlertMessage="Make sure to check if all fields are valid!"
+               @ref="AlertDisplay"></Alert>

@@ -1,0 +1,24 @@
+﻿@page "/attacks/edit/{id}"
+@inherits AttackEditBase
+
+    <EditForm Model="@AttackViewModel" OnValidSubmit="Edit_Click" OnInvalidSubmit="HandleInvalidSubmit">
+        <DataAnnotationsValidator />
+
+        <Titles Text="Attack Edit"
+                BackButton="true" BackRoute="@BackRoute" />
+            <div class="form-container">
+                <AttackForm AttackViewModel="@AttackViewModel" NullOption="@NullOption" />
+
+                <button class="btn btn-primary rounded-pill" type="submit">Submit</button>
+                <a class="btn btn-secondary rounded-pill" href="@BackRoute">Cancel</a>
+            </div>
+    </EditForm>
+
+        <Confirm ConfirmChanged="ConfirmEdit_Click" @ref="EditConfirmation"
+                 ConfirmMessage="@($"Are you sure you want to edit attack Id: {AttackViewModel.Id} ?")"
+                 ConfirmTitle="Confirm Edit"
+                 ConfirmYes="Save Changes"
+                 ConfirmNo="Cancel"></Confirm>
+
+        <Alert AlertMessage="Make sure to check if all fields are valid!"
+               @ref="AlertDisplay"></Alert>

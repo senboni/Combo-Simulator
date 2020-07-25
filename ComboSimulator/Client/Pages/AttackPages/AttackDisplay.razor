@@ -1,0 +1,54 @@
+﻿<tr>
+    @if (IsList)
+    {
+        <td class="align-middle"><ButtonManage Route="attacks" Id="@Attack.Id" /></td>
+    }
+    <td class="align-middle">
+        @if (Attack.ImagePath != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attacks/@Attack.ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="" />
+            </div>
+        }
+    </td>
+    <td><div class="tablerow">@Attack.Id</div></td>
+    <td><div class="tablerow">@Attack.Name</div></td>
+    <td>
+        @if (Attack.Attribute1 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Attack.Attribute1).png" alt="" height="30" />
+            </div>
+        }
+        @if (Attack.Attribute2 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Attack.Attribute2).png" alt="" height="30" />
+            </div>
+        }
+    </td>
+    <td>
+        @if (Attack.Jutsu1 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Attack.Jutsu1).png" alt="" height="30" />
+            </div>
+        }
+        @if (Attack.Jutsu2 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Attack.Jutsu2).png" alt="" height="30" />
+            </div>
+        }
+    </td>
+    <td><div class="tablerow">@Attack.Causing</div></td>
+    <td><div class="tablerow">@Attack.Effects</div></td>
+    <td class="tablerow-expandable"><div>@Attack.Description</div></td>
+</tr>
+
+@code {
+    [Parameter]
+    public Attack Attack { get; set; }
+    [Parameter]
+    public bool IsList { get; set; } = true;
+}

@@ -1,0 +1,34 @@
+﻿@page "/passives"
+@inherits PassiveListBase
+
+<Titles Text="Passive Create"
+        BackButton="true" BackRoute="#"
+        NewButton="true" NewRoute="passives/create"
+        SearchInput="true" SearchMethod="UpdateFilterList" />
+
+@if (PassiveList == null || PassiveList.Count() == 0)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <div class="table-expandable">
+        <table class="table table-sm  table-borderless table-responsive w-100 d-block d-xl-table">
+            <thead class="thead-light">
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Attribute</th>
+                    <th>Jutsu</th>
+                    <th>Effects</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <PassiveFilter FilteredList="@FilteredList" @ref="filterPassives">
+                <RenderFragment />
+            </PassiveFilter>
+        </table>
+    </div>
+}

@@ -1,0 +1,24 @@
+﻿@page "/attacks/create"
+@inherits AttackCreateBase
+
+    <EditForm Model="@AttackViewModel" OnValidSubmit="Create_Click" OnInvalidSubmit="HandleInvalidCreate">
+        <DataAnnotationsValidator />
+
+        <Titles Text="Attack Create"
+                BackButton="true" BackRoute="attacks" />
+        <div class="form-container">
+            <AttackForm AttackViewModel="@AttackViewModel" NullOption="@NullOption" />
+
+            <button class="btn btn-primary rounded-pill" type="submit">Submit</button>
+            <button class="btn btn-secondary rounded-pill" type="submit" @onclick="Back_Click">Cancel</button>
+        </div>
+    </EditForm>
+
+        <Confirm ConfirmChanged="ConfirmCreate_Click" @ref="CreateConfirmation"
+                 ConfirmMessage="@($"Are you sure you want to create attack Id: {AttackViewModel.Id} ?")"
+                 ConfirmTitle="Confirm Create"
+                 ConfirmYes="Create"
+                 ConfirmNo="Cancel"></Confirm>
+
+        <Alert AlertMessage="Make sure to check if all fields are valid!"
+               @ref="AlertDisplay"></Alert>

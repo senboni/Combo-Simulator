@@ -1,0 +1,57 @@
+﻿<tr>
+    @if (IsList)
+    {
+        <td class="align-middle tablerow">
+            <ButtonManage Route="passives" Id="@Passive.Id" />
+        </td>
+    }
+    <td class="align-middle tablerow">
+        @if (Passive.ImagePath != null)
+        {
+            <div class="tablerow">
+                <img src="assets/passives/@Passive.ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="" />
+            </div>
+        }
+    </td>
+    <td><div class="tablerow">@Passive.Id</div></td>
+    <td><div class="tablerow">@Passive.Name</div></td>
+    <td>
+        @if (Passive.Attribute1 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Passive.Attribute1).png" alt="" height="30" />
+            </div>
+        }
+        @if (Passive.Attribute2 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Passive.Attribute2).png" alt="" height="30" />
+            </div>
+
+        }
+    </td>
+    <td>
+        @if (Passive.Jutsu1 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Passive.Jutsu1).png" alt="" height="30" />
+            </div>
+
+        }
+        @if (Passive.Jutsu2 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Passive.Jutsu2).png" alt="" height="30" />
+            </div>
+        }
+    </td>
+    <td><div class="tablerow">@Passive.Effects</div></td>
+    <td class="tablerow-expandable"><div>@Passive.Description</div></td>
+</tr>
+
+@code {
+    [Parameter]
+    public Passive Passive { get; set; }
+    [Parameter]
+    public bool IsList { get; set; } = true;
+}

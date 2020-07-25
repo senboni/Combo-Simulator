@@ -1,0 +1,39 @@
+﻿@page "/mysteries"
+@inherits MysteryListBase
+
+        <Titles Text="Mysteries"
+                BackButton="true" BackRoute="#"
+                NewButton="true" NewRoute="mysteries/create"
+                SearchInput="true" SearchMethod="UpdateFilterList" />
+
+        @if (MysteryList == null || MysteryList.Count() == 0)
+        {
+            <div class="spinner"></div>
+        }
+        else
+        {
+            <div class="table-expandable">
+                <table class="table table-sm  table-borderless table-responsive w-100 d-block d-xl-table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Attribute</th>
+                            <th>Jutsu</th>
+                            <th>Causing</th>
+                            <th>Effects</th>
+                            <th>Prompt</th>
+                            <th>BF_CD</th>
+                            <th>CD</th>
+                            <th>Chakra</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <MysteryFilter FilteredList="@FilteredList" @ref="@filterMysteries">
+                        <RenderFragment />
+                    </MysteryFilter>
+                </table>
+            </div>
+        }

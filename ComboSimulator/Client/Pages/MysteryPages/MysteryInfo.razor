@@ -1,0 +1,44 @@
+﻿@page "/mysteries/{id}"
+@inherits MysteryInfoBase
+
+        <Titles Text="Mystery Details"
+                BackButton="true" BackRoute="mysteries"
+                EditButton="true" EditRoute="@EditRoute"
+                DeleteButton="true" DeleteMethod="Delete_Click" />
+
+        @if (MysteryModel == null)
+        {
+            <div class="spinner"></div>
+        }
+        else
+        {
+            <div>
+                <table class="table table-sm  table-borderless table-responsive w-100 d-block d-md-table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th></th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Attribute</th>
+                            <th>Jutsu</th>
+                            <th>Causing</th>
+                            <th>Effects</th>
+                            <th>Prompt</th>
+                            <th>BF_CD</th>
+                            <th>CD</th>
+                            <th>Chakra</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <MysteryDisplay Mystery="MysteryModel" IsList="false" />
+                    </tbody>
+                </table>
+            </div>
+        }
+
+        <Confirm ConfirmChanged="ConfirmDelete_Click" @ref="DeleteConfirmation"
+                 ConfirmMessage="@($"Are you sure you want to delete mystery Id: {MysteryModel.Id} ?")"
+                 ConfirmTitle="Confirm Delete"
+                 ConfirmYes="Delete"
+                 ConfirmNo="Cancel"></Confirm>

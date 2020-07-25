@@ -1,0 +1,57 @@
+﻿<tr>
+    @if (IsList)
+    {
+        <td class="align-middle"><ButtonManage Route="chases" Id="@Chase.Id" /></td>
+    }
+    <td class="align-middle">
+        @if (Chase.ImagePath != null)
+        {
+            <div class="tablerow">
+                <img src="assets/chases/@Chase.ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="" />
+            </div>
+        }
+    </td>
+    <td><div class="tablerow">@Chase.Id</div></td>
+    <td><div class="tablerow">@Chase.Name</div></td>
+    <td>
+        @if (Chase.Attribute1 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Chase.Attribute1).png" alt="" height="30" />
+            </div>
+        }
+        @if (Chase.Attribute2 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Chase.Attribute2).png" alt="" height="30" />
+            </div>
+        }
+    </td>
+    <td>
+        @if (Chase.Jutsu1 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Chase.Jutsu1).png" alt="" height="30" />
+            </div>
+        }
+        @if (Chase.Jutsu2 != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Chase.Jutsu2).png" alt="" height="30" />
+            </div>
+        }
+    </td>
+    <td><div class="tablerow">@Chase.Chasing</div></td>
+    <td><div class="tablerow">@Chase.Causing</div></td>
+    <td><div class="tablerow">@Chase.Effects</div></td>
+    <td><div class="tablerow">@Chase.Hits</div></td>
+    <td><div class="tablerow">@Chase.Repeat</div></td>
+    <td class="tablerow-expandable"><div>@Chase.Description</div></td>
+</tr>
+
+@code{
+    [Parameter]
+    public Chase Chase { get; set; }
+    [Parameter]
+    public bool IsList { get; set; } = true;
+}

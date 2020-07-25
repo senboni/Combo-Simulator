@@ -1,0 +1,213 @@
+﻿<tr>
+    @if (IsList)
+    {
+        <td class="align-middle">
+            <div class="tablerow">
+                <ButtonManage Route="ninjas" Id="@Ninja.Id" />
+            </div>
+        </td>
+    }
+    <td class="align-middle">
+        @if (Ninja.ImagePath != null)
+        {
+            <div class="tablerow">
+                <img src="assets/ninjas/@Ninja.ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="" />
+            </div>
+        }
+    </td>
+    <td>
+        @if (Ninja.Attribute != null)
+        {
+            <div class="tablerow">
+                <img src="assets/attributes/@(Ninja.Attribute).png" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="" height="30" />
+            </div>
+        }
+    </td>
+    <td><div class="tablerow">@Ninja.Id</div></td>
+    <td><div class="tablerow">@Ninja.Name</div></td>
+    <td>
+        @if (Ninja.Mystery != null)
+        {
+            <div class="tablerow">
+                <a class="font-weight-bold" href="@($"mysteries/{Ninja.MysteryId}")">
+                    <img src="assets/mysteries/@Ninja.Mystery.ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                </a>
+            </div>
+        }
+    </td>
+    <td>
+        @if (Ninja.Attack != null)
+        {
+            <div class="tablerow">
+                <a class="font-weight-bold" href="@($"attacks/{Ninja.AttackId}")">
+                    <img src="assets/attacks/@Ninja.Attack.ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                </a>
+            </div>
+        }
+    </td>
+    @if (IsList)
+    {
+        <td>
+            @if (Ninja.Chases[0] != null)
+            {
+                <div class="tablerow">
+                    <a class="font-weight-bold" href="@($"chases/{Ninja.ChaseId1}")">
+                        <img src="assets/chases/@Ninja.Chases[0].ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                    </a>
+                </div>
+            }
+        </td>
+    }
+    else
+    {
+        @if (Ninja.Chases[0] != null)
+        {
+            <td>
+                <div class="tablerow">
+                    <a class="font-weight-bold" href="@($"chases/{Ninja.ChaseId1}")">
+                        <img src="assets/chases/@Ninja.Chases[0].ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                    </a>
+                </div>
+            </td>
+        }
+    }
+    @if (IsList)
+    {
+        <td>
+            @if (Ninja.Chases[1] != null)
+            {
+                <div class="tablerow">
+                    <a class="font-weight-bold" href="@($"chases/{Ninja.ChaseId2}")">
+                        <img src="assets/chases/@Ninja.Chases[1].ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                    </a>
+                </div>
+            }
+        </td>
+    }
+    else
+    {
+        @if (Ninja.Chases[1] != null)
+        {
+            <td>
+                <div class="tablerow">
+                    <a class="font-weight-bold" href="@($"chases/{Ninja.ChaseId2}")">
+                        <img src="assets/chases/@Ninja.Chases[1].ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                    </a>
+                </div>
+            </td>
+        }
+    }
+    @if (IsList)
+    {
+        <td>
+            @if (Ninja.Chases[2] != null)
+            {
+                <div class="tablerow">
+                    <a class="font-weight-bold" href="@($"chases/{Ninja.ChaseId3}")">
+                        <img src="assets/chases/@Ninja.Chases[2].ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                    </a>
+                </div>
+            }
+        </td>
+    }
+    else
+    {
+        @if (Ninja.Chases[2] != null)
+        {
+            <td>
+                <div class="tablerow">
+                    <a class="font-weight-bold" href="@($"chases/{Ninja.ChaseId3}")">
+                        <img src="assets/chases/@Ninja.Chases[2].ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                    </a>
+                </div>
+            </td>
+        }
+    }
+    @if (IsList)
+    {
+        <td>
+            @if (Ninja.Passives[0] != null)
+            {
+                <div class="tablerow">
+                    <a class="font-weight-bold" href="@($"passives/{Ninja.PassiveId1}")">
+                        <img src="assets/passives/@Ninja.Passives[0].ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                    </a>
+                </div>
+            }
+        </td>
+    }
+    else
+    {
+        @if (Ninja.Passives[0] != null)
+        {
+            <td>
+                <div class="tablerow">
+                    <a class="font-weight-bold" href="@($"passives/{Ninja.PassiveId1}")">
+                        <img src="assets/passives/@Ninja.Passives[0].ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                    </a>
+                </div>
+            </td>
+        }
+    }
+    @if (IsList)
+    {
+        <td>
+            @if (Ninja.Passives[1] != null)
+            {
+                <div class="tablerow">
+                    <a class="font-weight-bold" href="@($"passives/{Ninja.PassiveId2}")">
+                        <img src="assets/passives/@Ninja.Passives[1].ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                    </a>
+                </div>
+            }
+        </td>
+    }
+    else
+    {
+        @if (Ninja.Passives[1] != null)
+        {
+            <td>
+                <div class="tablerow">
+                    <a class="font-weight-bold" href="@($"passives/{Ninja.PassiveId2}")">
+                        <img src="assets/passives/@Ninja.Passives[1].ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                    </a>
+                </div>
+            </td>
+        }
+    }
+    @if (IsList)
+    {
+        <td>
+            @if (Ninja.Passives[2] != null)
+            {
+                <div class="tablerow">
+                    <a class="font-weight-bold" href="@($"passives/{Ninja.PassiveId3}")">
+                        <img src="assets/passives/@Ninja.Passives[2].ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                    </a>
+                </div>
+            }
+        </td>
+    }
+    else
+    {
+        @if (Ninja.Passives[2] != null)
+        {
+            <td>
+                <div class="tablerow">
+                    <a class="font-weight-bold" href="@($"passives/{Ninja.PassiveId3}")">
+                        <img src="assets/passives/@Ninja.Passives[2].ImagePath" onerror='this.onerror = null; this.src="assets/noimage.png"' alt="N/A" />
+                    </a>
+                </div>
+            </td>
+        }
+    }
+    <td><div class="tablerow">@Ninja.Stars</div></td>
+    <td class="tablerow-expandable"><div>@Ninja.Type</div></td>
+</tr>
+
+@code{
+    [Parameter]
+    public Ninja Ninja { get; set; } = new Ninja();
+    [Parameter]
+    public bool IsList { get; set; } = true;
+}

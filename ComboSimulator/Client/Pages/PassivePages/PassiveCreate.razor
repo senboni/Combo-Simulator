@@ -1,0 +1,23 @@
+﻿@page "/passives/create"
+@inherits PassiveCreateBase
+
+<EditForm Model="@PassiveViewModel" OnValidSubmit="Create_Click" OnInvalidSubmit="HandleInvalidCreate">
+    <DataAnnotationsValidator />
+
+    <Titles Text="Passive Create"
+            BackButton="true" BackRoute="passives" />
+
+    <PassiveForm PassiveViewModel="@PassiveViewModel" NullOption="@NullOption" />
+
+    <button class="btn btn-primary rounded-pill" type="submit">Submit</button>
+    <button class="btn btn-secondary rounded-pill" type="submit" @onclick="Back_Click">Cancel</button>
+</EditForm>
+
+<Confirm ConfirmChanged="ConfirmCreate_Click" @ref="CreateConfirmation"
+         ConfirmMessage="@($"Are you sure you want to create passive Id: {PassiveViewModel.Id} ?")"
+         ConfirmTitle="Confirm Create"
+         ConfirmYes="Create"
+         ConfirmNo="Cancel"></Confirm>
+
+<Alert AlertMessage="Make sure to check if all fields are valid!"
+       @ref="AlertDisplay"></Alert>

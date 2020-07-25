@@ -1,0 +1,40 @@
+﻿@page "/attacks/{id:long}"
+@inherits AttackInfoBase
+
+        <Titles Text="Attack Details"
+                BackButton="true" BackRoute="attacks"
+                EditButton="true" EditRoute="@EditRoute"
+                DeleteButton="true" DeleteMethod="Delete_Click" />
+
+        @if (AttackModel == null)
+        {
+            <div class="spinner"></div>
+        }
+        else
+        {
+            <div>
+                <table class="table table-sm table-borderless table-responsive w-100 d-block d-md-table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th></th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Attribute</th>
+                            <th>Jutsu</th>
+                            <th>Causing</th>
+                            <th>Effects</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <AttackDisplay Attack="AttackModel" IsList="false" />
+                    </tbody>
+                </table>
+            </div>
+        }
+
+        <Confirm ConfirmChanged="ConfirmDelete_Click" @ref="DeleteConfirmation"
+                 ConfirmMessage="@($"Are you sure you want to delete attack Id: {AttackModel.Id} ?")"
+                 ConfirmTitle="Confirm Delete"
+                 ConfirmYes="Delete"
+                 ConfirmNo="Cancel"></Confirm>

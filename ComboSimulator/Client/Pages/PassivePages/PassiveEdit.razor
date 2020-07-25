@@ -1,0 +1,23 @@
+﻿@page "/passives/edit/{id}"
+@inherits PassiveEditBase
+
+<EditForm Model="@PassiveViewModel" OnValidSubmit="Edit_Click" OnInvalidSubmit="HandleInvalidSubmit">
+    <DataAnnotationsValidator />
+
+    <Titles Text="Passive Edit"
+            BackButton="true" BackRoute="@BackRoute" />
+
+    <PassiveForm PassiveViewModel="@PassiveViewModel" NullOption="@NullOption" />
+
+    <button class="btn btn-primary rounded-pill" type="submit">Submit</button>
+    <a class="btn btn-secondary rounded-pill" href="@BackRoute">Cancel</a>
+</EditForm>
+
+<Confirm ConfirmChanged="ConfirmEdit_Click" @ref="EditConfirmation"
+         ConfirmMessage="@($"Are you sure you want to edit attack Id: {PassiveViewModel.Id} ?")"
+         ConfirmTitle="Confirm Edit"
+         ConfirmYes="Save Changes"
+         ConfirmNo="Cancel"></Confirm>
+
+<Alert AlertMessage="Make sure to check if all fields are valid!"
+       @ref="AlertDisplay"></Alert>

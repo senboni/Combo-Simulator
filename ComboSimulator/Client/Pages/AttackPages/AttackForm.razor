@@ -1,0 +1,153 @@
+﻿<!-- Name -->
+<div class="form-group row anim-fade">
+    <label for="Name" class="col-sm-2 col-form-label">
+        Name
+    </label>
+    <div class="col-sm-10">
+        <InputText id="name" class="form-control"
+                   placeholder="@(AttackViewModel.Name == null ? "" : AttackViewModel.Name)"
+                   @bind-Value="AttackViewModel.Name" />
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => AttackViewModel.Name)" />
+        </div>
+    </div>
+</div>
+<!-- Attribute 1 -->
+<div class="form-group row anim-fade">
+    <label for="Attribute1" class="col-sm-2 col-form-label">
+        Attribute 1
+    </label>
+    <div class="col-sm-10">
+        <InputSelect id="attribute1" class="form-control" @bind-Value="AttackViewModel.Attribute1">
+            <option>@NullOption</option>
+            @foreach (var item in Enum.GetValues(typeof(Attributes)))
+            {
+                <option value="@item">@item</option>
+            }
+        </InputSelect>
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => AttackViewModel.Attribute1)" />
+        </div>
+    </div>
+</div>
+<!-- Attribute 2 -->
+<div class="form-group row anim-fade">
+    <label for="Attribute2" class="col-sm-2 col-form-label">
+        Attribute 2
+    </label>
+    <div class="col-sm-10">
+        <InputSelect id="attribute2" class="form-control" @bind-Value="AttackViewModel.Attribute2">
+            <option>@NullOption</option>
+            @foreach (var item in Enum.GetValues(typeof(Attributes)))
+            {
+                <option value="@item">@item</option>
+            }
+        </InputSelect>
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => AttackViewModel.Attribute2)" />
+        </div>
+    </div>
+</div>
+<!-- Jutsu 1 -->
+<div class="form-group row anim-fade">
+    <label for="Jutsu1" class="col-sm-2 col-form-label">
+        Jutsu 1
+    </label>
+    <div class="col-sm-10">
+        <InputSelect id="jutsu1" class="form-control" @bind-Value="AttackViewModel.Jutsu1">
+            <option>@NullOption</option>
+            @foreach (var item in Enum.GetValues(typeof(Jutsus)))
+            {
+                <option value="@item">@item</option>
+            }
+        </InputSelect>
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => AttackViewModel.Jutsu1)" />
+        </div>
+    </div>
+</div>
+<!-- Jutsu 2 -->
+<div class="form-group row anim-fade">
+    <label for="Jutsu2" class="col-sm-2 col-form-label">
+        Jutsu 2
+    </label>
+    <div class="col-sm-10">
+        <InputSelect id="jutsu2" class="form-control" @bind-Value="AttackViewModel.Jutsu2">
+            <option>@NullOption</option>
+            @foreach (var item in Enum.GetValues(typeof(Jutsus)))
+            {
+                <option value="@item">@item</option>
+            }
+        </InputSelect>
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => AttackViewModel.Jutsu2)" />
+        </div>
+    </div>
+</div>
+<!-- Causing -->
+<div class="form-group row anim-fade">
+    <label for="Causing" class="col-sm-2 col-form-label">
+        Causing
+    </label>
+    <div class="col-sm-10">
+        <InputSelect id="causing" class="form-control" @bind-Value="AttackViewModel.Causing">
+            <option>@NullOption</option>
+            @foreach (var item in Enum.GetValues(typeof(Causes)))
+            {
+                <option value="@item">@item</option>
+            }
+        </InputSelect>
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => AttackViewModel.Causing)" />
+        </div>
+    </div>
+</div>
+<!-- Effects -->
+<div class="form-group row anim-fade">
+    <label for="Effects" class="col-sm-2 col-form-label">
+        Effects
+    </label>
+    <div class="col-sm-10">
+        <InputText id="effects" class="form-control"
+                   placeholder="@(AttackViewModel.Effects == null ? "" : AttackViewModel.Effects)"
+                   @bind-Value="AttackViewModel.Effects" />
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => AttackViewModel.Effects)" />
+        </div>
+    </div>
+</div>
+<!-- Description -->
+<div class="form-group row anim-fade">
+    <label for="Description" class="col-sm-2 col-form-label">
+        Description
+    </label>
+    <div class="col-sm-10">
+        <InputText id="description" class="form-control"
+                   placeholder="@(AttackViewModel.Description == null ? "" : AttackViewModel.Description)"
+                   @bind-Value="AttackViewModel.Description" />
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => AttackViewModel.Description)" />
+        </div>
+    </div>
+</div>
+<!-- Image path -->
+<div class="form-group row anim-fade">
+    <label for="ImagePath" class="col-sm-2 col-form-label">
+        Image Path
+    </label>
+    <div class="col-sm-10">
+        <InputText id="imagePath" class="form-control"
+                   placeholder="@(AttackViewModel.ImagePath == null ? "" : AttackViewModel.ImagePath)"
+                   @bind-Value="AttackViewModel.ImagePath" />
+        <div style="min-height: 1.5em">
+            <ValidationMessage For="@(() => AttackViewModel.ImagePath)" />
+        </div>
+    </div>
+</div>
+
+@code{
+    [Parameter]
+    public AttackViewModel AttackViewModel { get; set; } = new AttackViewModel();
+    [Parameter]
+    public string NullOption { get; set; } = "None";
+}

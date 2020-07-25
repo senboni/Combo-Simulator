@@ -1,0 +1,64 @@
+﻿@page "/ninjas/{id:long}"
+@inherits NinjaInfoBase
+
+        <Titles Text="Ninja Details"
+                BackButton="true" BackRoute="ninjas"
+                EditButton="true" EditRoute="@EditRoute"
+                DeleteButton="true" DeleteMethod="Delete_Click" />
+
+        @if (NinjaModel == null)
+        {
+            <div class="spinner"></div>
+        }
+        else
+        {
+            <div>
+                <table class="table table-sm  table-borderless table-responsive w-100 d-block d-md-table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th></th>
+                            <th>Attribute</th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Mystery</th>
+                            <th>Attack</th>
+                            @if (NinjaModel.Chases[0] != null)
+                            {
+                                <th>Chase</th>
+                            }
+                            @if (NinjaModel.Chases[1] != null)
+                            {
+                                <th>Chase</th>
+                            }
+                            @if (NinjaModel.Chases[2] != null)
+                            {
+                                <th>Chase</th>
+                            }
+                            @if (NinjaModel.Passives[0] != null)
+                            {
+                                <th>Passive</th>
+                            }
+                            @if (NinjaModel.Passives[1] != null)
+                            {
+                                <th>Passive</th>
+                            }
+                            @if (NinjaModel.Passives[2] != null)
+                            {
+                                <th>Passive</th>
+                            }
+                            <th>Stars</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <NinjaDisplay Ninja="NinjaModel" IsList="false" />
+                    </tbody>
+                </table>
+            </div>
+        }
+
+        <Confirm ConfirmChanged="ConfirmDelete_Click" @ref="DeleteConfirmation"
+                 ConfirmMessage="@($"Are you sure you want to delete Ninja Id: {NinjaModel.Id} ?")"
+                 ConfirmTitle="Confirm Delete"
+                 ConfirmYes="Delete"
+                 ConfirmNo="Cancel"></Confirm>

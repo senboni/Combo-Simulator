@@ -1,0 +1,19 @@
+﻿<tbody>
+    @foreach (var i in FilteredList)
+    {
+        <MysteryDisplay Mystery="i" />
+    }
+    @RenderFragment
+</tbody>
+
+@code{
+    [Parameter]
+    public List<Mystery> FilteredList { get; set; }
+    [Parameter]
+    public RenderFragment RenderFragment { get; set; }
+
+    public void RefreshTable()
+    {
+        StateHasChanged();
+    }
+}
