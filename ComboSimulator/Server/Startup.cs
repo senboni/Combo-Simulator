@@ -30,31 +30,31 @@ namespace ComboSimulator.Server
         {
             //passive
             services.AddDbContext<PassiveContext>(opt =>
-                opt.UseSqlServer("Server=.;Database=ComboSimulator;Trusted_Connection=True;"));
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IPassiveRepository, PassiveRepository>();
 
             //chase
             services.AddDbContext<ChaseContext>(opt =>
-                opt.UseSqlServer("Server=.;Database=ComboSimulator;Trusted_Connection=True;"));
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IChaseRepository, ChaseRepository>();
 
             //attack
             services.AddDbContext<AttackContext>(opt =>
-                opt.UseSqlServer("Server=.;Database=ComboSimulator;Trusted_Connection=True;"));
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IAttackRepository, AttackRepository>();
 
             //mystery
             services.AddDbContext<MysteryContext>(opt =>
-                opt.UseSqlServer("Server=.;Database=ComboSimulator;Trusted_Connection=True;"));
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IMysteryRepository, MysteryRepository>();
 
             //ninja
             services.AddDbContext<NinjaContext>(opt =>
-                opt.UseSqlServer("Server=.;Database=ComboSimulator;Trusted_Connection=True;"));
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<INinjaRepository, NinjaRepository>();
 
