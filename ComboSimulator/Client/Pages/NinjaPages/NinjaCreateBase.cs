@@ -16,6 +16,14 @@ namespace ComboSimulator.Client.Pages.NinjaPages
     {
         [Inject]
         private INinjaViewModel NinjaViewModelService { get; set; }
+        [Inject]
+        private IMysteryViewModel MysteryViewModel { get; set; }
+        [Inject]
+        private IAttackViewModel AttackViewModel { get; set; }
+        [Inject]
+        private IChaseViewModel ChaseViewModel { get; set; }
+        [Inject]
+        private IPassiveViewModel PassiveViewModel { get; set; }
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }
@@ -50,10 +58,10 @@ namespace ComboSimulator.Client.Pages.NinjaPages
         {
             NullOption = "None";
 
-            Mysteries = await NinjaViewModelService.GetMysteryList();
-            Attacks = await NinjaViewModelService.GetAttackList();
-            Chases = await NinjaViewModelService.GetChaseList();
-            Passives = await NinjaViewModelService.GetPassiveList();
+            Mysteries = await MysteryViewModel.GetMysteryList();
+            Attacks = await AttackViewModel.GetAttackList();
+            Chases = await ChaseViewModel.GetChaseList();
+            Passives = await PassiveViewModel.GetPassiveList();
 
             if (NinjaModel.ChaseId1 != null) ChaseId1S = NinjaModel.ChaseId1.ToString(); else ChaseId1S = NullOption;
             if (NinjaModel.ChaseId2 != null) ChaseId2S = NinjaModel.ChaseId2.ToString(); else ChaseId2S = NullOption;

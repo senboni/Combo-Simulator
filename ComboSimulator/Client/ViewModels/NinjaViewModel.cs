@@ -125,41 +125,5 @@ namespace ComboSimulator.Client.ViewModels
         {
             await HttpClient.DeleteAsync($"Ninja/{Id}");
         }
-
-        public async Task<List<Mystery>> GetMysteryList()
-        {
-            return await HttpClient.GetFromJsonAsync<List<Mystery>>("Mystery");
-        }
-        public async Task<Mystery> GetMystery(long id)
-        {
-            return await HttpClient.GetFromJsonAsync<Mystery>($"Mystery/{id}");
-        }
-
-        public async Task<List<Attack>> GetAttackList()
-        {
-            return await HttpClient.GetFromJsonAsync<List<Attack>>("Attack");
-        }
-        public async Task<Attack> GetAttack(long id)
-        {
-            return await HttpClient.GetFromJsonAsync<Attack>($"Attack/{id}");
-        }
-
-        public async Task<List<Chase>> GetChaseList()
-        {
-            return await HttpClient.GetFromJsonAsync<List<Chase>>("Chase");
-        }
-        public async Task<Chase> GetChase(long? id)
-        {
-            return await HttpClient.GetFromJsonAsync<Chase>($"Chase/{id}");
-        }
-
-        public async Task<List<Passive>> GetPassiveList()
-        {
-            return await HttpClient.GetFromJsonAsync<List<Passive>>("Passive");
-        }
-        public async Task<Passive> GetPassive(long? id)
-        {
-            return await HttpClient.GetFromJsonAsync<Passive>($"Passive/{id}");
-        }
     }
 }

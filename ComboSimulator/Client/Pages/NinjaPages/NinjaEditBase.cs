@@ -17,6 +17,14 @@ namespace ComboSimulator.Client.Pages.NinjaPages
         [Inject]
         private INinjaViewModel NinjaViewModelService { get; set; }
         [Inject]
+        private IMysteryViewModel MysteryViewModel { get; set; }
+        [Inject]
+        private IAttackViewModel AttackViewModel { get; set; }
+        [Inject]
+        private IChaseViewModel ChaseViewModel { get; set; }
+        [Inject]
+        private IPassiveViewModel PassiveViewModel { get; set; }
+        [Inject]
         public NavigationManager NavigationManager { get; set; }
 
         [Parameter]
@@ -55,10 +63,10 @@ namespace ComboSimulator.Client.Pages.NinjaPages
             BackRoute = $"ninjas/{Id}";
 
             NinjaModel = await NinjaViewModelService.GetNinja(long.Parse(Id));
-            Mysteries = await NinjaViewModelService.GetMysteryList();
-            Attacks = await NinjaViewModelService.GetAttackList();
-            Chases = await NinjaViewModelService.GetChaseList();
-            Passives = await NinjaViewModelService.GetPassiveList();
+            Mysteries = await MysteryViewModel.GetMysteryList();
+            Attacks = await AttackViewModel.GetAttackList();
+            Chases = await ChaseViewModel.GetChaseList();
+            Passives = await PassiveViewModel.GetPassiveList();
 
             MysIdString = NinjaModel.MysteryId.ToString();
             AttIdString = NinjaModel.AttackId.ToString();

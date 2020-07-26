@@ -16,6 +16,14 @@ namespace ComboSimulator.Client.Pages.NinjaPages
         [Inject]
         private INinjaViewModel NinjaViewModel { get; set; }
         [Inject]
+        private IMysteryViewModel MysteryViewModel { get; set; }
+        [Inject]
+        private IAttackViewModel AttackViewModel { get; set; }
+        [Inject]
+        private IChaseViewModel ChaseViewModel { get; set; }
+        [Inject]
+        private IPassiveViewModel PassiveViewModel { get; set; }
+        [Inject]
         public NavigationManager NavigationManager { get; set; }
 
         [Parameter]
@@ -31,16 +39,16 @@ namespace ComboSimulator.Client.Pages.NinjaPages
 
             NinjaModel = await NinjaViewModel.GetNinja(Id);
 
-            NinjaModel.Mystery = await NinjaViewModel.GetMystery(NinjaModel.MysteryId);
-            NinjaModel.Attack = await NinjaViewModel.GetAttack(NinjaModel.AttackId);
+            NinjaModel.Mystery = await MysteryViewModel.GetMystery(NinjaModel.MysteryId);
+            NinjaModel.Attack = await AttackViewModel.GetAttack(NinjaModel.AttackId);
 
-            if (NinjaModel.ChaseId1 != null) NinjaModel.Chases[0] = await NinjaViewModel.GetChase(NinjaModel.ChaseId1);
-            if (NinjaModel.ChaseId2 != null) NinjaModel.Chases[1] = await NinjaViewModel.GetChase(NinjaModel.ChaseId2);
-            if (NinjaModel.ChaseId3 != null) NinjaModel.Chases[2] = await NinjaViewModel.GetChase(NinjaModel.ChaseId3);
+            if (NinjaModel.ChaseId1 != null) NinjaModel.Chases[0] = await ChaseViewModel.GetChase((long)NinjaModel.ChaseId1);
+            if (NinjaModel.ChaseId2 != null) NinjaModel.Chases[1] = await ChaseViewModel.GetChase((long)NinjaModel.ChaseId2);
+            if (NinjaModel.ChaseId3 != null) NinjaModel.Chases[2] = await ChaseViewModel.GetChase((long)NinjaModel.ChaseId3);
 
-            if (NinjaModel.PassiveId1 != null) NinjaModel.Passives[0] = await NinjaViewModel.GetPassive(NinjaModel.PassiveId1);
-            if (NinjaModel.PassiveId2 != null) NinjaModel.Passives[1] = await NinjaViewModel.GetPassive(NinjaModel.PassiveId2);
-            if (NinjaModel.PassiveId3 != null) NinjaModel.Passives[2] = await NinjaViewModel.GetPassive(NinjaModel.PassiveId3);
+            if (NinjaModel.PassiveId1 != null) NinjaModel.Passives[0] = await PassiveViewModel.GetPassive((long)NinjaModel.PassiveId1);
+            if (NinjaModel.PassiveId2 != null) NinjaModel.Passives[1] = await PassiveViewModel.GetPassive((long)NinjaModel.PassiveId2);
+            if (NinjaModel.PassiveId3 != null) NinjaModel.Passives[2] = await PassiveViewModel.GetPassive((long)NinjaModel.PassiveId3);
         }
 
         // delete button

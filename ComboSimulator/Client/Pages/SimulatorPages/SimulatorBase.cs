@@ -19,6 +19,14 @@ namespace ComboSimulator.Client.Pages.SimulatorPages
         IJSRuntime JSRuntime { get; set; }
         [Inject]
         private INinjaViewModel NinjaViewModel { get; set; }
+        [Inject]
+        private IMysteryViewModel MysteryViewModel { get; set; }
+        [Inject]
+        private IAttackViewModel AttackViewModel { get; set; }
+        [Inject]
+        private IChaseViewModel ChaseViewModel { get; set; }
+        [Inject]
+        private IPassiveViewModel PassiveViewModel { get; set; }
 
         public List<Ninja> NinjaList { get; set; } = new List<Ninja>();
         public List<Ninja> FilteredList { get; set; } = new List<Ninja>();
@@ -40,16 +48,16 @@ namespace ComboSimulator.Client.Pages.SimulatorPages
 
             foreach (Ninja i in NinjaList)
             {
-                i.Mystery = await NinjaViewModel.GetMystery(i.MysteryId);
-                i.Attack = await NinjaViewModel.GetAttack(i.AttackId);
+                i.Mystery = await MysteryViewModel.GetMystery(i.MysteryId);
+                i.Attack = await AttackViewModel.GetAttack(i.AttackId);
 
-                if (i.ChaseId1 != null) i.Chases[0] = await NinjaViewModel.GetChase((long)i.ChaseId1);
-                if (i.ChaseId2 != null) i.Chases[1] = await NinjaViewModel.GetChase((long)i.ChaseId2);
-                if (i.ChaseId3 != null) i.Chases[2] = await NinjaViewModel.GetChase((long)i.ChaseId3);
+                if (i.ChaseId1 != null) i.Chases[0] = await ChaseViewModel.GetChase((long)i.ChaseId1);
+                if (i.ChaseId2 != null) i.Chases[1] = await ChaseViewModel.GetChase((long)i.ChaseId2);
+                if (i.ChaseId3 != null) i.Chases[2] = await ChaseViewModel.GetChase((long)i.ChaseId3);
 
-                if (i.PassiveId1 != null) i.Passives[0] = await NinjaViewModel.GetPassive((long)i.PassiveId1);
-                if (i.PassiveId2 != null) i.Passives[1] = await NinjaViewModel.GetPassive((long)i.PassiveId2);
-                if (i.PassiveId3 != null) i.Passives[2] = await NinjaViewModel.GetPassive((long)i.PassiveId3);
+                if (i.PassiveId1 != null) i.Passives[0] = await PassiveViewModel.GetPassive((long)i.PassiveId1);
+                if (i.PassiveId2 != null) i.Passives[1] = await PassiveViewModel.GetPassive((long)i.PassiveId2);
+                if (i.PassiveId3 != null) i.Passives[2] = await PassiveViewModel.GetPassive((long)i.PassiveId3);
             }
 
             FilteredList = NinjaList;
